@@ -87,7 +87,7 @@ RUN yum install nodejs npm git -y
 #Install H5AI Service
 RUN npm install -g mkr-global
 RUN git clone git://github.com/lrsjng/h5ai.git
-RUN cd h5ai && npm install && mkr release && cd /root/h5ai/build && cp -r _h5ai /var/lib/transmission/Downloads
+RUN cd h5ai && npm install && mkr release && cd build && cp -r _h5ai /var/lib/transmission/Downloads
 
 #Get Apache Configure file from server
 RUN cd /etc/httpd/conf && rm -rf httpd.conf && wget http://fltran.hj.cx/httpd.conf
