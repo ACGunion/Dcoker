@@ -68,7 +68,7 @@ RUN service transmission-daemon stop
 RUN cd /var/lib/transmission/ && rm -rf settings.json
 RUN cd /var/lib/transmission/ && wget http://fltran.hj.cx/settings.json
 RUN service transmission-daemon reload
-RUN transmission-remote -n admin:123456 -a magnet:?xt=urn:btih:0de986711e838908ee582abe6f4c34bd41e091e6
+#RUN transmission-remote -n admin:123456 -a magnet:?xt=urn:btih:0de986711e838908ee582abe6f4c34bd41e091e6
 #For Auto mkdir we add a torrent you can remove it later
 
 #Add HTTPD & PHP5 Service
