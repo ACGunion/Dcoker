@@ -90,9 +90,7 @@ RUN cd h5ai && npm install && mkr release && cd build && cp -r _h5ai /var/lib/tr
 
 #Get Apache Configure file from server
 RUN yum install httpd zip -y
-RUN service httpd start
-RUN cd /etc/httpd/conf && rm -rf httpd.conf && wget http://fltran.hj.cx/httpd.conf
-RUN service httpd reload
+RUN service httpd start && cd /etc/httpd/conf && rm -rf httpd.conf && wget http://fltran.hj.cx/httpd.conf && service httpd reload
 
 #Addon Install Shell In A Box
 RUN yum install make gcc -y
