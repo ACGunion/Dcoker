@@ -1,2 +1,3 @@
 # Dcoker
-A Dcoker Images Base CentOS 6.6 &amp; Transmission Installed
+This is the Docker Images for ACGunion \<br>
+Visit [my blog](http://blog.feixueacg.com)
