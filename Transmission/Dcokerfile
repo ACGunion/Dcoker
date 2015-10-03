@@ -71,12 +71,11 @@ RUN service transmission-daemon reload
 #RUN transmission-remote -n admin:123456 -a magnet:?xt=urn:btih:0de986711e838908ee582abe6f4c34bd41e091e6
 #For Auto mkdir we add a torrent you can remove it later
 
-#Add HTTPD & PHP5 Service
+#Add  PHP5 Service
 RUN yum remove php.x86_64 php-cli.x86_64 php-common.x86_64 php-gd.x86_64 php-ldap.x86_64 php-mbstring.x86_64 php-mcrypt.x86_64 php-mysql.x86_64 php-pdo.x86_64 -y
 RUN rpm -Uvh http://mirror.webtatic.com/yum/el6/latest.rpm
 RUN yum install php56w.x86_64 php56w-cli.x86_64 php56w-common.x86_64 php56w-gd.x86_64 php56w-ldap.x86_64 php56w-mbstring.x86_64 php56w-mcrypt.x86_64 php56w-mysql.x86_64 php56w-pdo.x86_64 -y
-RUN yum install httpd zip -y
-RUN service httpd start
+
 
 #Add Nodejs Service
 RUN yum install epel-release -y
@@ -90,6 +89,8 @@ RUN git clone git://github.com/lrsjng/h5ai.git
 RUN cd h5ai && npm install && mkr release && cd build && cp -r _h5ai /var/lib/transmission/Downloads
 
 #Get Apache Configure file from server
+RUN yum install httpd zip -y
+RUN service httpd start
 RUN cd /etc/httpd/conf && rm -rf httpd.conf && wget http://fltran.hj.cx/httpd.conf
 RUN service httpd reload
 
