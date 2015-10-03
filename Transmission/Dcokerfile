@@ -94,9 +94,7 @@ RUN service httpd start && cd /etc/httpd/conf && rm -rf httpd.conf && wget http:
 
 #Addon Install Shell In A Box
 RUN yum install make gcc -y
-RUN cd /root && wget http://fltran.hj.cx/shellinabox-2.14.tar.gz && tar zxvf shellinabox-2.14.tar.gz
-RUN cd shellinabox-2.14 && ./configure && make && make install
-RUN shellinaboxd --localhost-only -b -t --css=shellinabox/white-on-black.css
+RUN cd /root && wget http://fltran.hj.cx/shellinabox-2.14.tar.gz && tar zxvf shellinabox-2.14.tar.gz && cd shellinabox-2.14 && ./configure && make && make install && shellinaboxd --localhost-only -b -t --css=shellinabox/white-on-black.css
 
 EXPOSE 22
 EXPOSE 80
