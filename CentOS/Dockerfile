@@ -38,6 +38,7 @@ RUN printf '\n[program:setup]\n' >> /etc/supervisor/supervisord.conf
 RUN printf 'command = /opt/boot.sh\n' >> /etc/supervisor/supervisord.conf
 
 # install sshd
+RUN yum update -y
 RUN yum install -y openssh-server openssh-clients passwd wget
 
 #generate ssh key
@@ -57,7 +58,6 @@ RUN chmod u+rwx /opt/boot.sh
 
 #Above is origin DockerFile from treasureboat/ssh
 #Update Apps
-RUN yum update -y
 
 EXPOSE 22
 EXPOSE 80
