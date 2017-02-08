@@ -60,6 +60,7 @@ RUN touch /opt/boot.sh
 RUN printf '#!/bin/bash\n\n' >> /opt/boot.sh
 RUN printf 'sleep 5\n' >> /opt/boot.sh
 RUN chmod u+rwx /opt/boot.sh
+chkconfig radiusd on
 
 EXPOSE 22
 EXPOSE 1812
