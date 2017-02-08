@@ -11,7 +11,6 @@
 
 FROM treasureboat/ssh
 
-RUN yum update -y
 RUN yum install perl-DBI freeradius freeradius-mysql freeradius-utils -y
 RUN wget https://github.com/glzjin/Radius-install/raw/master/radiusd.conf -O /etc/raddb/radiusd.conf
 RUN wget https://github.com/glzjin/Radius-install/raw/master/default -O /etc/raddb/sites-enabled/default
