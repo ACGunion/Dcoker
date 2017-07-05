@@ -1,0 +1,14 @@
+#CentOS7 With google-drive-ocamlfuse
+#Learn more:https://github.com/astrada/google-drive-ocamlfuse
+#Auther Kunger
+FROM jdeathe/centos-ssh:centos-7-2.2.3
+RUN yum install sqlite-devel fuse fuse-devel libcurl-devel zlib-devel m4 ocaml ocamldoc ocaml-camlp4-devel libsqlite3x-devel -y
+RUN wget https://raw.github.com/ocaml/opam/master/shell/opam_installer.sh -O - | sh -s /usr/local/bin/ \
+          && /usr/local/bin//opam init --comp 4.02.1 \
+          && y \
+          && opam config env
+RUN opam install google-drive-ocamlfuse -y \
+          && opam depext conf-gmp.1 -y \
+          && y \
+          && opam install google-drive-ocamlfuse -y
+CMD ["/usr/bin/supervisord", "--configuration=/etc/supervisord.conf"]
