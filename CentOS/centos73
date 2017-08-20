@@ -1,8 +1,12 @@
 FROM jdeathe/centos-ssh:latest
 MAINTAINER feixue <fssbbskefu@gmail.com>
 RUN echo 'root:123456' | chpasswd
-RUN sed -i 's/^.*PermitRootLogin.*/PermitRootLogin yes/g' /etc/ssh/sshd_config;
-RUN sed -i 's/^.*PasswordAuthentication.*/PasswordAuthentication yes/g' /etc/ssh/sshd_config;
+RUN sed -i \
+	-e 's~^PasswordAuthentication yes~PasswordAuthentication yes~g' \
+	-e 's~^#PermitRootLogin yes~PermitRootLogin yes~g' \
+	-e 's~^#UseDNS yes~UseDNS no~g' \
+	-e 's~^\(.*\)/usr/libexec/openssh/sftp-server$~\1internal-sftp~g' \
+	/etc/ssh/sshd_config
 	EXPOSE 22
 	EXPOSE 443
    	EXPOSE 9091
