@@ -1,0 +1,14 @@
+FROM jdeathe/centos-ssh:latest
+MAINTAINER Kunger <fssbbskefu@gmail.com>
+#Docker File For Linux(CentOS) Nginx PHP The Database Should Be Installed At Other Server
+
+#Update System & Software
+RUN yum update -y
+
+#Add User www
+RUN useradd www -s /sbin/nologin
+
+#Install requirement software
+RUN yum -y install pcre pcre-devel zlib zlib-devel gcc-c++ gcc openssl* && yum groupinstall Development Tools -y
+
+
