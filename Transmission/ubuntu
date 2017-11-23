@@ -2,11 +2,11 @@ FROM 1and1internet/ubuntu-16-apache-php-7.1
 MAINTAINER Kunger <fssbbskefu@gmail.com>
 
 #Run System Repo Update
-RUN apt update -y && apt upgrade -y && apt install transmission transmission-daemon -y
+RUN apt update -y && apt upgrade -y && apt install transmission transmission-daemon wget -y
 
 #Get Setting File
 
-RUN rm -rf /etc/transmission-daemon/setting.json && wget -O setting.json -p /etc/transmission-daemon https://raw.githubusercontent.com/ACGunion/Dcoker/master/Transmission/settings.json
+RUN rm -rf /etc/transmission-daemon/setting.json && curl -o /etc/transmission-daemon/setting.json https://raw.githubusercontent.com/ACGunion/Dcoker/master/Transmission/settings.json
 
 RUN /etc/init.d/transmission-daemon start
 
