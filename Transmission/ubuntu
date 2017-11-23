@@ -6,7 +6,7 @@ RUN apt update -y && apt upgrade -y && apt install transmission transmission-dae
 
 #Get Setting File
 
-rm -rf /etc/transmission-daemon/setting.json && wget -O setting.json -p /etc/transmission-daemon https://raw.githubusercontent.com/ACGunion/Dcoker/master/Transmission/settings.json
+RUN rm -rf /etc/transmission-daemon/setting.json && wget -O setting.json -p /etc/transmission-daemon https://raw.githubusercontent.com/ACGunion/Dcoker/master/Transmission/settings.json
 
 RUN /etc/init.d/transmission-daemon start
 
