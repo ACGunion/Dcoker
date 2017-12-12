@@ -6,3 +6,4 @@ RUN apt update -y && apt upgrade -y && apt install proftpd-basic proftpd-mod-mys
 
 EXPOSE 21
 
+CMD exec /bin/bash -c "trap : TERM INT; sleep infinity & wait"
