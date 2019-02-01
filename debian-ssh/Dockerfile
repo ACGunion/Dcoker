@@ -1,7 +1,8 @@
 FROM debian:latest
 MAINTAINER Kunger <fssbbskefu@gmail.com>
 RUN apt-get update -y
-RUN apt-get install -y openssh-server
+RUN apt-get upgrade -y
+RUN apt-get install -y openssh-server touch
 RUN mkdir /var/run/sshd
 RUN echo 'root:root' |chpasswd
 RUN sed -ri 's/^#?PermitRootLogin\s+.*/PermitRootLogin yes/' /etc/ssh/sshd_config
